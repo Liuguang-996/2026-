@@ -330,6 +330,70 @@
       background: #fff7f5;
     }
 
+    .requirement-grid {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .requirement-grid .card {
+      height: 100%;
+    }
+
+    .spec-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .spec-card {
+      min-height: 210px;
+    }
+
+    .spec-card h3 {
+      margin: 0 0 10px;
+      font-size: 22px;
+      line-height: 1.25;
+    }
+
+    .spec-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .spec-list {
+      margin: 14px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 8px;
+      color: #344157;
+      font-size: 15px;
+    }
+
+    .spec-list li {
+      padding-left: 16px;
+      position: relative;
+    }
+
+    .spec-list li::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--cyan);
+      position: absolute;
+      left: 0;
+      top: .75em;
+    }
+
+    .device-note {
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
     .table-wrap {
       overflow-x: auto;
       border: 1px solid var(--line);
@@ -403,7 +467,8 @@
       }
 
       .hero-grid,
-      .split {
+      .split,
+      .requirement-grid {
         grid-template-columns: 1fr;
       }
 
@@ -413,7 +478,8 @@
 
       .info-grid,
       .timeline,
-      .source-grid {
+      .source-grid,
+      .spec-grid {
         grid-template-columns: repeat(2, 1fr);
       }
     }
@@ -441,7 +507,8 @@
 
       .info-grid,
       .timeline,
-      .source-grid {
+      .source-grid,
+      .spec-grid {
         grid-template-columns: 1fr;
       }
 
@@ -474,6 +541,7 @@
           <div class="hero-actions">
             <a class="btn primary" href="#timeline">查看时间线</a>
             <a class="btn" href="#signup">报名要求</a>
+            <a class="btn" href="#devices">器件要求</a>
             <a class="btn" href="#sources">信息来源</a>
           </div>
         </div>
@@ -642,6 +710,78 @@
       </div>
     </section>
 
+    <section class="section" id="devices">
+      <div class="shell">
+        <h2>供应商与指定器件要求</h2>
+        <p class="section-intro">2026 年模拟电子系统设计专题赛（TI 杯）已发布 TI 指定器件说明。备赛时应把处理器平台、模拟前端和控制算法训练放在一起准备，最终仍以正式赛题和赛场发放器件为准。</p>
+        <div class="requirement-grid">
+          <div class="card notice">
+            <small>今年官方供应商</small>
+            <b>Texas Instruments<br>德州仪器 TI</b>
+            <p>决赛为全封闭式竞赛，现场使用的模拟器件和处理器器件均由 TI 公司提供。</p>
+            <div class="tag-row">
+              <span class="tag">TI 杯</span>
+              <span class="tag">现场统一器件</span>
+              <span class="tag">免费板卡申请</span>
+            </div>
+          </div>
+          <div class="card">
+            <small>控制类/处理器要求</small>
+            <b>初赛将有 1 道题指定 TI MSPM0 系列处理器</b>
+            <p class="device-note">MSPM0 具体型号不限定，参赛队可根据题目需求和训练储备自行选择。官方同时提示参赛队提前熟悉 TI 处理器开发与应用。</p>
+            <ul class="list">
+              <li><span class="check">✓</span><span>初赛计划不少于 7 道题，其中 1 道题指定使用 TI MSPM0 系列处理器。</span></li>
+              <li><span class="check">✓</span><span>决赛现场可选处理器平台包括 MSPM0G3507 核心板、MSPM0L1306 核心板、MSP-EXP430F5529LP 和 LAUNCHXL-F280049C。</span></li>
+              <li><span class="check">✓</span><span>控制类方向建议重点训练 PWM、ADC 采样、闭环控制、编码器/传感器接口、串口调试和电源抗干扰。</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="spec-grid" aria-label="指定处理器平台规格">
+          <article class="card spec-card">
+            <h3>MSPM0G3507 核心板</h3>
+            <p>偏综合控制与混合信号应用。</p>
+            <ul class="spec-list">
+              <li>Arm Cortex-M0+，最高 80 MHz</li>
+              <li>128 KB Flash，32 KB SRAM</li>
+              <li>12 位 SAR ADC，含 DAC、比较器、运放</li>
+              <li>支持 CAN-FD、I2C、SPI、UART 等接口</li>
+            </ul>
+          </article>
+          <article class="card spec-card">
+            <h3>MSPM0L1306 核心板</h3>
+            <p>偏低功耗、小规模控制与传感采集。</p>
+            <ul class="spec-list">
+              <li>Arm Cortex-M0+，最高 32 MHz</li>
+              <li>64 KB Flash，4 KB SRAM</li>
+              <li>12 位 SAR ADC，带比较器、DMA、零漂移运放</li>
+              <li>含 5V 容忍 I/O，适合外设接口训练</li>
+            </ul>
+          </article>
+          <article class="card spec-card">
+            <h3>MSP-EXP430F5529LP</h3>
+            <p>MSP430 USB LaunchPad 开发板。</p>
+            <ul class="spec-list">
+              <li>MSP430 内核，最高 25 MHz</li>
+              <li>128 KB Flash，8 KB SRAM</li>
+              <li>12 位 SAR ADC，支持 USB、UART、SPI、I2C</li>
+              <li>低功耗控制、USB 通信和基础外设训练适用</li>
+            </ul>
+          </article>
+          <article class="card spec-card">
+            <h3>LAUNCHXL-F280049C</h3>
+            <p>C2000 实时控制器 LaunchPad。</p>
+            <ul class="spec-list">
+              <li>100 MHz C28x CPU，含 FPU/TMU</li>
+              <li>256 KB Flash，约 100 KB RAM</li>
+              <li>3 组 12 位 ADC，16 路 PWM</li>
+              <li>适合电机控制、数字电源和高速闭环控制训练</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section class="section" id="sources">
       <div class="shell">
         <h2>信息来源</h2>
@@ -658,6 +798,10 @@
           <a class="card source" href="https://nuedc.xjtu.edu.cn/index/index/detail/id/142/catid/6.html" target="_blank" rel="noopener">
             <strong>全国大学生电子设计竞赛官方通知</strong>
             <span>含 2026 年模拟电子系统设计专题赛的官方通知信息。</span>
+          </a>
+          <a class="card source" href="https://www.nuedc-training.com.cn/index/news/details/new_id/351" target="_blank" rel="noopener">
+            <strong>2026 模拟电子系统设计专题赛（TI 杯）指定器件说明</strong>
+            <span>含 TI 指定器件、处理器平台、MSPM0 初赛要求和免费板卡申请方式。</span>
           </a>
         </div>
       </div>
