@@ -394,6 +394,190 @@
       font-size: 15px;
     }
 
+    .supplier-board {
+      display: grid;
+      grid-template-columns: minmax(260px, .78fr) minmax(0, 1.22fr);
+      gap: 18px;
+      align-items: stretch;
+      margin-bottom: 18px;
+    }
+
+    .supplier-hero {
+      position: relative;
+      min-height: 340px;
+      overflow: hidden;
+      color: #fff;
+      background:
+        linear-gradient(145deg, rgba(29, 95, 215, .96), rgba(0, 122, 137, .94)),
+        #1d5fd7;
+      border: 0;
+    }
+
+    .supplier-hero::after {
+      content: "TI";
+      position: absolute;
+      right: -8px;
+      bottom: -44px;
+      font-size: 150px;
+      line-height: 1;
+      font-weight: 900;
+      color: rgba(255, 255, 255, .13);
+    }
+
+    .supplier-hero small,
+    .supplier-hero p {
+      color: rgba(255, 255, 255, .78);
+    }
+
+    .supplier-hero b {
+      font-size: clamp(30px, 4vw, 46px);
+    }
+
+    .supplier-hero .tag {
+      background: rgba(255, 255, 255, .16);
+      color: #fff;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .22);
+    }
+
+    .supplier-categories {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .supplier-category {
+      min-height: 164px;
+      padding: 18px;
+      transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+    }
+
+    .supplier-category:hover {
+      transform: translateY(-3px);
+      border-color: rgba(29, 95, 215, .36);
+      box-shadow: 0 16px 40px rgba(23, 32, 51, .1);
+    }
+
+    .supplier-category h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+      line-height: 1.28;
+    }
+
+    .supplier-category p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .category-mark {
+      width: 38px;
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      margin-bottom: 12px;
+      border-radius: 8px;
+      background: #eaf3ff;
+      color: var(--blue);
+      font-weight: 900;
+    }
+
+    .supplier-carousel {
+      margin-top: 22px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 12px 36px rgba(23, 32, 51, .07);
+    }
+
+    .carousel-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: end;
+      padding: 18px 18px 0;
+    }
+
+    .carousel-header h3 {
+      margin: 0;
+      font-size: 22px;
+      line-height: 1.25;
+    }
+
+    .carousel-header span {
+      color: var(--muted);
+      font-size: 14px;
+      text-align: right;
+    }
+
+    .carousel-window {
+      overflow: hidden;
+      padding: 18px;
+      mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+    }
+
+    .carousel-track {
+      display: flex;
+      gap: 14px;
+      width: max-content;
+      animation: supplier-scroll 24s linear infinite;
+    }
+
+    .supplier-carousel:hover .carousel-track {
+      animation-play-state: paused;
+    }
+
+    .platform-card {
+      width: 320px;
+      flex: 0 0 auto;
+      background: #f8fbff;
+    }
+
+    .platform-card h4 {
+      margin: 0 0 8px;
+      font-size: 20px;
+      line-height: 1.25;
+    }
+
+    .platform-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .platform-meta {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .platform-meta span {
+      min-height: 42px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      background: #fff;
+      color: #31405a;
+      font-size: 13px;
+      font-weight: 700;
+      border: 1px solid rgba(223, 229, 239, .9);
+    }
+
+    @keyframes supplier-scroll {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(calc(-50% - 7px));
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .carousel-track {
+        animation: none;
+      }
+    }
+
     .table-wrap {
       overflow-x: auto;
       border: 1px solid var(--line);
@@ -468,7 +652,8 @@
 
       .hero-grid,
       .split,
-      .requirement-grid {
+      .requirement-grid,
+      .supplier-board {
         grid-template-columns: 1fr;
       }
 
@@ -479,7 +664,8 @@
       .info-grid,
       .timeline,
       .source-grid,
-      .spec-grid {
+      .spec-grid,
+      .supplier-categories {
         grid-template-columns: repeat(2, 1fr);
       }
     }
@@ -508,8 +694,25 @@
       .info-grid,
       .timeline,
       .source-grid,
-      .spec-grid {
+      .spec-grid,
+      .supplier-categories {
         grid-template-columns: 1fr;
+      }
+
+      .supplier-hero {
+        min-height: 290px;
+      }
+
+      .carousel-header {
+        display: grid;
+      }
+
+      .carousel-header span {
+        text-align: left;
+      }
+
+      .platform-card {
+        width: 270px;
       }
 
       .hero-facts {
@@ -714,30 +917,134 @@
       <div class="shell">
         <h2>供应商与指定器件要求</h2>
         <p class="section-intro">2026 年模拟电子系统设计专题赛（TI 杯）已发布 TI 指定器件说明。备赛时应把处理器平台、模拟前端和控制算法训练放在一起准备，最终仍以正式赛题和赛场发放器件为准。</p>
-        <div class="requirement-grid">
-          <div class="card notice">
-            <small>今年官方供应商</small>
+        <div class="supplier-board">
+          <div class="card supplier-hero">
+            <small>官方供应商</small>
             <b>Texas Instruments<br>德州仪器 TI</b>
-            <p>决赛为全封闭式竞赛，现场使用的模拟器件和处理器器件均由 TI 公司提供。</p>
+            <p>决赛为全封闭式竞赛，现场使用的模拟器件和处理器器件均由 TI 公司提供。备赛时可同步关注初赛指定要求、决赛可选平台和控制类训练重点。</p>
             <div class="tag-row">
               <span class="tag">TI 杯</span>
               <span class="tag">现场统一器件</span>
               <span class="tag">免费板卡申请</span>
             </div>
           </div>
-          <div class="card">
-            <small>控制类/处理器要求</small>
-            <b>初赛将有 1 道题指定 TI MSPM0 系列处理器</b>
-            <p class="device-note">MSPM0 具体型号不限定，参赛队可根据题目需求和训练储备自行选择。官方同时提示参赛队提前熟悉 TI 处理器开发与应用。</p>
-            <ul class="list">
-              <li><span class="check">✓</span><span>初赛计划不少于 7 道题，其中 1 道题指定使用 TI MSPM0 系列处理器。</span></li>
-              <li><span class="check">✓</span><span>决赛现场可选处理器平台包括 MSPM0G3507 核心板、MSPM0L1306 核心板、MSP-EXP430F5529LP 和 LAUNCHXL-F280049C。</span></li>
-              <li><span class="check">✓</span><span>控制类方向建议重点训练 PWM、ADC 采样、闭环控制、编码器/传感器接口、串口调试和电源抗干扰。</span></li>
-            </ul>
+
+          <div class="supplier-categories" aria-label="供应商信息分类">
+            <article class="card supplier-category">
+              <span class="category-mark">01</span>
+              <h3>初赛指定</h3>
+              <p>初赛计划不少于 7 道题，其中 1 道题指定使用 TI MSPM0 系列处理器；MSPM0 具体型号不限定。</p>
+            </article>
+            <article class="card supplier-category">
+              <span class="category-mark">02</span>
+              <h3>决赛平台</h3>
+              <p>现场可选 MSPM0G3507、MSPM0L1306、MSP430F5529 LaunchPad 与 C2000 F280049C。</p>
+            </article>
+            <article class="card supplier-category">
+              <span class="category-mark">03</span>
+              <h3>训练重点</h3>
+              <p>建议围绕 PWM、ADC、闭环控制、传感器接口、串口调试和电源抗干扰做连续训练。</p>
+            </article>
+            <article class="card supplier-category">
+              <span class="category-mark">04</span>
+              <h3>准备方式</h3>
+              <p>提前熟悉 TI 处理器开发环境和常用模拟器件，板卡申请与最终器件以官方通知为准。</p>
+            </article>
           </div>
         </div>
 
-        <div class="spec-grid" aria-label="指定处理器平台规格">
+        <div class="supplier-carousel" aria-label="指定处理器平台轮播">
+          <div class="carousel-header">
+            <h3>指定处理器平台</h3>
+            <span>决赛可选平台按公开说明整理</span>
+          </div>
+          <div class="carousel-window">
+            <div class="carousel-track">
+              <article class="card platform-card">
+                <h4>MSPM0G3507 核心板</h4>
+                <p>偏综合控制与混合信号应用。</p>
+                <div class="platform-meta">
+                  <span>Arm Cortex-M0+ / 80 MHz</span>
+                  <span>128 KB Flash / 32 KB SRAM</span>
+                  <span>12 位 SAR ADC</span>
+                  <span>CAN-FD / I2C / SPI / UART</span>
+                </div>
+              </article>
+              <article class="card platform-card">
+                <h4>MSPM0L1306 核心板</h4>
+                <p>偏低功耗、小规模控制与传感采集。</p>
+                <div class="platform-meta">
+                  <span>Arm Cortex-M0+ / 32 MHz</span>
+                  <span>64 KB Flash / 4 KB SRAM</span>
+                  <span>比较器 / DMA / 运放</span>
+                  <span>5V 容忍 I/O</span>
+                </div>
+              </article>
+              <article class="card platform-card">
+                <h4>MSP-EXP430F5529LP</h4>
+                <p>MSP430 USB LaunchPad 开发板。</p>
+                <div class="platform-meta">
+                  <span>MSP430 / 25 MHz</span>
+                  <span>128 KB Flash / 8 KB SRAM</span>
+                  <span>12 位 SAR ADC</span>
+                  <span>USB / UART / SPI / I2C</span>
+                </div>
+              </article>
+              <article class="card platform-card">
+                <h4>LAUNCHXL-F280049C</h4>
+                <p>C2000 实时控制器 LaunchPad。</p>
+                <div class="platform-meta">
+                  <span>100 MHz C28x CPU</span>
+                  <span>256 KB Flash / 约 100 KB RAM</span>
+                  <span>3 组 12 位 ADC</span>
+                  <span>16 路 PWM</span>
+                </div>
+              </article>
+              <article class="card platform-card" aria-hidden="true">
+                <h4>MSPM0G3507 核心板</h4>
+                <p>偏综合控制与混合信号应用。</p>
+                <div class="platform-meta">
+                  <span>Arm Cortex-M0+ / 80 MHz</span>
+                  <span>128 KB Flash / 32 KB SRAM</span>
+                  <span>12 位 SAR ADC</span>
+                  <span>CAN-FD / I2C / SPI / UART</span>
+                </div>
+              </article>
+              <article class="card platform-card" aria-hidden="true">
+                <h4>MSPM0L1306 核心板</h4>
+                <p>偏低功耗、小规模控制与传感采集。</p>
+                <div class="platform-meta">
+                  <span>Arm Cortex-M0+ / 32 MHz</span>
+                  <span>64 KB Flash / 4 KB SRAM</span>
+                  <span>比较器 / DMA / 运放</span>
+                  <span>5V 容忍 I/O</span>
+                </div>
+              </article>
+              <article class="card platform-card" aria-hidden="true">
+                <h4>MSP-EXP430F5529LP</h4>
+                <p>MSP430 USB LaunchPad 开发板。</p>
+                <div class="platform-meta">
+                  <span>MSP430 / 25 MHz</span>
+                  <span>128 KB Flash / 8 KB SRAM</span>
+                  <span>12 位 SAR ADC</span>
+                  <span>USB / UART / SPI / I2C</span>
+                </div>
+              </article>
+              <article class="card platform-card" aria-hidden="true">
+                <h4>LAUNCHXL-F280049C</h4>
+                <p>C2000 实时控制器 LaunchPad。</p>
+                <div class="platform-meta">
+                  <span>100 MHz C28x CPU</span>
+                  <span>256 KB Flash / 约 100 KB RAM</span>
+                  <span>3 组 12 位 ADC</span>
+                  <span>16 路 PWM</span>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+
+        <div class="spec-grid" aria-label="指定处理器平台详细规格">
           <article class="card spec-card">
             <h3>MSPM0G3507 核心板</h3>
             <p>偏综合控制与混合信号应用。</p>
